@@ -2,7 +2,7 @@
 %define lua_version 5.1
 %define debug_package %{nil}
 
-Summary: openresty lua upstream  healthcheck
+Summary: openresty lua upstream healthcheck
 Name: openresty-lua-upstream-healthcheck
 Version: %{openresty_lua_upstream_healthcheck}
 Release: 1%{?dist}
