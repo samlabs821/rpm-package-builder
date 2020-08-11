@@ -5,9 +5,9 @@ die() {
   exit 1
 }
 
-if [[ ! -n "${1}" ]] ; then
+if [[ -z "${1}" ]] ; then
   die "Please define \${1} as a feature of this script you want to use i.e. build or build_in_docker."
-elif [[ ! -n "${2}" ]] ; then
+elif [[ -z "${2}" ]] ; then
   die "Please define \${2} as a spec file you want to build using this script."
 fi
 
