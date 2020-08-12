@@ -1,5 +1,5 @@
 %define openresty_stream_lua_version 0.0.8
-%define nginx_version 1.18.0
+%define nginx_version 1.19.2
 %define debug_package %{nil}
 
 Summary: nginx openresty stream lua shared module

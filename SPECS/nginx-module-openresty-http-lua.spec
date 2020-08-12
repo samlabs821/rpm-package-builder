@@ -1,5 +1,5 @@
 %define openresty_http_lua_version 0.10.17
-%define nginx_version 1.18.0
+%define nginx_version 1.19.2
 %define debug_package %{nil}
 
 Summary: nginx openresty http lua shared module

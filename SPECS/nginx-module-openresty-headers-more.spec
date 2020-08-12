@@ -1,5 +1,5 @@
 %define nginx_module_openresty_headers_more 0.33
-%define nginx_version 1.18.0
+%define nginx_version 1.19.2
 %define debug_package %{nil}
 
 Summary: nginx openresty headers more shared module
