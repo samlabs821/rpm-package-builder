@@ -1,38 +1,32 @@
-%define openresty_lua_upstream_healthcheck 0.06
 %define lua_version 5.1
 %define debug_package %{nil}
 
-Summary: openresty lua upstream healthcheck
 Name: openresty-lua-upstream-healthcheck
-Version: %{openresty_lua_upstream_healthcheck}
-Release: 1%{?dist}
+Version: 0.06
+Release: 2%{?dist}
+Summary: openresty lua upstream healthcheck
 License: BSD
 URL: https://github.com/openresty/lua-resty-upstream-healthcheck
-
-Source: https://github.com/openresty/lua-resty-upstream-healthcheck/archive/v%{openresty_lua_upstream_healthcheck}/lua-resty-upstream-healthcheck-v%{openresty_lua_upstream_healthcheck}.tar.gz
-
+Source: %{url}/archive/v%{version}/lua-resty-upstream-healthcheck-v%{version}.tar.gz
 Requires: nginx, lua = %{lua_version}
-
 BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
-%{summary}
+Health-checker for Nginx upstream servers.
 
 %prep
-%setup -q -n lua-resty-upstream-healthcheck-%{openresty_lua_upstream_healthcheck}
+%setup -q -n lua-resty-upstream-healthcheck-%{version}
 
 %install
-%{__rm} -rf %{buildroot}
-%{__install} -d $RPM_BUILD_ROOT/usr/share/lua/%{lua_version}/resty/
-%{__install} -d $RPM_BUILD_ROOT/usr/share/lua/%{lua_version}/resty/upstream/
+%{__install} -d %{buildroot}%{_datadir}/lua/%{lua_version}/resty
+%{__install} -d %{buildroot}%{_datadir}/lua/%{lua_version}/resty/upstream
 
-%{__install} -Dm755 %{_builddir}/lua-resty-upstream-healthcheck-%{openresty_lua_upstream_healthcheck}/lib/resty/upstream/*.lua \
-    $RPM_BUILD_ROOT/usr/share/lua/%{lua_version}/resty/upstream
+%{__install} -m 755 %{_builddir}/lua-resty-upstream-healthcheck-%{version}/lib/resty/upstream/*.lua \
+  %{buildroot}%{_datadir}/lua/%{lua_version}/resty/upstream
 
 %clean
 %{__rm} -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-/usr/share/lua/%{lua_version}/resty/upstream/*.lua
+%{_datadir}/lua/%{lua_version}/resty/upstream/*.lua
