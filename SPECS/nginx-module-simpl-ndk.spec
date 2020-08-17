@@ -2,17 +2,14 @@
 %define nginx_version 1.19.2
 %define debug_package %{nil}
 
-Summary: nginx simpl ndk shared module
 Name: nginx-module-simpl-ndk
 Version: %{nginx_version}+%{simpl_ndk_version}
-Release: 1%{?dist}
+Release: 2%{?dist}
+Summary: nginx simpl ndk shared module
 License: BSD
 URL: https://github.com/simpl/ngx_devel_kit
-
 Source0: https://nginx.org/download/nginx-%{nginx_version}.tar.gz
-Source1: https://github.com/simpl/ngx_devel_kit/archive/v%{simpl_ndk_version}/ngx_devel_kit-%{simpl_ndk_version}.tar.gz
-
-Requires: nginx = 1:%{nginx_version}
+Source1: %{url}/archive/v%{simpl_ndk_version}/ngx_devel_kit-%{simpl_ndk_version}.tar.gz
 BuildRequires: libtool
 BuildRequires: autoconf
 BuildRequires: automake
@@ -20,11 +17,10 @@ BuildRequires: make
 BuildRequires: openssl-devel
 BuildRequires: pcre-devel
 BuildRequires: zlib-devel
-
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
+Requires: nginx = 1:%{nginx_version}
 
 %description
-%{summary}
+The NDK is an Nginx module that is designed to extend the core functionality of the excellent Nginx webserver in a way that can be used as a basis of other Nginx modules.
 
 %prep
 %setup -q -n nginx-%{nginx_version}
@@ -33,13 +29,13 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 %build
 cd %{_builddir}/nginx-%{nginx_version}
 ./configure --with-compat --add-dynamic-module=../ngx_devel_kit-%{simpl_ndk_version}
-make modules
+%make_build modules
 
 %install
-%{__rm} -rf %{buildroot}
+%{__install} -d %{buildroot}%{_libdir}/nginx/modules
 
-%{__install} -Dm755 %{_builddir}/nginx-%{nginx_version}/objs/ndk_http_module.so \
-    $RPM_BUILD_ROOT%{_libdir}/nginx/modules/ndk_http_module.so
+%{__install} -m 755 %{_builddir}/nginx-%{nginx_version}/objs/ndk_http_module.so \
+  %{buildroot}%{_libdir}/nginx/modules/ndk_http_module.so
 
 %clean
 %{__rm} -rf %{buildroot}
