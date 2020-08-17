@@ -8,7 +8,8 @@ Summary: openresty lua core
 License: BSD
 URL: https://github.com/openresty/lua-resty-core
 Source: %{url}/archive/v%{version}/lua-resty-core-v%{version}.tar.gz
-Requires: nginx, lua = %{lua_version}
+Requires: nginx
+Requires: lua = %{lua_version}
 BuildArch: noarch
 
 %description

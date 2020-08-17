@@ -8,7 +8,8 @@ Summary: knyar lua nginx prometheus
 License: MIT
 URL: https://github.com/knyar/nginx-lua-prometheus
 Source: %{url}/archive/%{version}/nginx-lua-prometheus-%{version}.tar.gz
-Requires: nginx, lua = %{lua_version}
+Requires: nginx
+Requires: lua = %{lua_version}
 BuildArch: noarch
 
 %description

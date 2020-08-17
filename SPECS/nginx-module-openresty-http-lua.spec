@@ -10,8 +10,17 @@ License: BSD
 URL: https://github.com/openresty/lua-nginx-module
 Source0: https://nginx.org/download/nginx-%{nginx_version}.tar.gz
 Source1: %{url}/archive/v%{openresty_http_lua_version}/http-lua-%{openresty_http_lua_version}.tar.gz
-BuildRequires: luajit-devel, libtool, autoconf, automake, make, openssl-devel, pcre-devel, zlib-devel
-Requires: nginx = 1:%{nginx_version}, nginx-module-simpl-ndk, luajit
+BuildRequires: luajit-devel
+BuildRequires: libtool
+BuildRequires: autoconf
+BuildRequires: automake
+BuildRequires: make
+BuildRequires: openssl-devel
+BuildRequires: pcre-devel
+BuildRequires: zlib-devel
+Requires: nginx = 1:%{nginx_version}
+Requires: nginx-module-simpl-ndk
+Requires: luajit
 
 %description
 This module embeds LuaJIT 2.0/2.1 into Nginx. It is a core component of OpenResty.

@@ -8,8 +8,10 @@ Summary: openresty lua balancer
 License: BSD
 URL: https://github.com/openresty/lua-resty-balancer
 Source: %{url}/archive/v%{version}/lua-resty-balancer-v%{version}.tar.gz
-BuildRequires: libtool, make
-Requires: nginx, lua = %{lua_version}
+BuildRequires: libtool
+BuildRequires: make
+Requires: nginx
+Requires: lua = %{lua_version}
 
 %description
 A generic consistent hash and roundrobin implementations for OpenResty/LuaJIT.

@@ -10,7 +10,13 @@ License: BSD
 URL: https://github.com/openresty/headers-more-nginx-module
 Source0: https://nginx.org/download/nginx-%{nginx_version}.tar.gz
 Source1: %{url}/archive/v%{nginx_module_openresty_headers_more}/headers-more-nginx-module-v%{nginx_module_openresty_headers_more}.tar.gz
-BuildRequires: libtool, autoconf, automake, make, openssl-devel, pcre-devel, zlib-devel
+BuildRequires: libtool
+BuildRequires: autoconf
+BuildRequires: automake
+BuildRequires: make
+BuildRequires: openssl-devel
+BuildRequires: pcre-devel
+BuildRequires: zlib-devel
 Requires: nginx = 1:%{nginx_version}
 
 %description
