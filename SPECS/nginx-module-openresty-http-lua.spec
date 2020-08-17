@@ -2,33 +2,19 @@
 %define nginx_version 1.19.2
 %define debug_package %{nil}
 
-Summary: nginx openresty http lua shared module
 Name: nginx-module-openresty-http-lua
 Version: %{nginx_version}+%{openresty_http_lua_version}
-Release: 2%{?dist}
-Vendor: damex
-URL: https://github.com/openresty/lua-nginx-module
+Release: 3%{?dist}
+Summary: nginx openresty http lua shared module
 License: BSD
-
+URL: https://github.com/openresty/lua-nginx-module
 Source0: https://nginx.org/download/nginx-%{nginx_version}.tar.gz
-Source1: https://github.com/openresty/lua-nginx-module/archive/v%{openresty_http_lua_version}/http-lua-%{openresty_http_lua_version}.tar.gz
-
-Requires: nginx = 1:%{nginx_version}
-Requires: nginx-module-simpl-ndk
-Requires: luajit
-BuildRequires: luajit-devel
-BuildRequires: libtool
-BuildRequires: autoconf
-BuildRequires: automake
-BuildRequires: make
-BuildRequires: openssl-devel
-BuildRequires: pcre-devel
-BuildRequires: zlib-devel
-
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
+Source1: %{url}/archive/v%{openresty_http_lua_version}/http-lua-%{openresty_http_lua_version}.tar.gz
+BuildRequires: luajit-devel, libtool, autoconf, automake, make, openssl-devel, pcre-devel, zlib-devel
+Requires: nginx = 1:%{nginx_version}, nginx-module-simpl-ndk, luajit
 
 %description
-%{summary}
+This module embeds LuaJIT 2.0/2.1 into Nginx. It is a core component of OpenResty.
 
 %prep
 %setup -q -n nginx-%{nginx_version}
@@ -36,16 +22,16 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %build
 cd %{_builddir}/nginx-%{nginx_version}
-export LUAJIT_INC=/usr/include/luajit-2.0
+export LUAJIT_INC=%{_includedir}/luajit-2.0
 export LUAJIT_LIB=%{_libdir}
 ./configure --with-ld-opt="-Wl,-rpath,$LUAJIT_LIB" --with-compat --add-dynamic-module=../lua-nginx-module-%{openresty_http_lua_version}
-make modules
+%make_build modules
 
 %install
-%{__rm} -rf %{buildroot}
+%{__install} -d %{buildroot}%{_libdir}/nginx/modules
 
-%{__install} -Dm755 %{_builddir}/nginx-%{nginx_version}/objs/ngx_http_lua_module.so \
-    $RPM_BUILD_ROOT%{_libdir}/nginx/modules/ngx_http_lua_module.so
+%{__install} -m 755 %{_builddir}/nginx-%{nginx_version}/objs/ngx_http_lua_module.so \
+  %{buildroot}%{_libdir}/nginx/modules/ngx_http_lua_module.so
 
 %clean
 %{__rm} -rf %{buildroot}
