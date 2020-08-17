@@ -23,9 +23,9 @@ This library implements a simple LRU cache for OpenResty and the ngx_lua module.
 %{__install} -d %{buildroot}%{_datadir}/lua/%{lua_version}/resty/lrucache
 
 %{__install} -m 755 %{_builddir}/lua-resty-lrucache-%{version}/lib/resty/*.lua \
-    %{buildroot}%{_datadir}/lua/%{lua_version}/resty
+  %{buildroot}%{_datadir}/lua/%{lua_version}/resty
 %{__install} -m 755 %{_builddir}/lua-resty-lrucache-%{version}/lib/resty/lrucache/*.lua \
-    %{buildroot}%{_datadir}/lua/%{lua_version}/resty/lrucache
+  %{buildroot}%{_datadir}/lua/%{lua_version}/resty/lrucache
 
 %clean
 %{__rm} -rf %{buildroot}
