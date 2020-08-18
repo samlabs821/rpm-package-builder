@@ -2,7 +2,7 @@
 
 Name: prometheus
 Version: 2.20.1
-Release: 1%{?dist}
+Release: 4%{?dist}
 Summary: monitoring system and time series database
 License: ASL 2.0
 URL: https://prometheus.io
@@ -40,16 +40,19 @@ Documentation=https://prometheus.io/docs/introduction/overview
 Restart=always
 User=prometheus
 Group=prometheus
-EnvironmentFile=/etc/default/prometheus
-ExecStart=/usr/bin/prometheus $ARGS
-ExecReload=/bin/kill -HUP $MAINPID
+EnvironmentFile=%{_sysconfdir}/default/prometheus
+ExecStart=%{_bindir}/prometheus \$ARGS
+ExecReload=%{_bindir}/kill -HUP \$MAINPID
 SendSIGKILL=no
 
 [Install]
 WantedBy=multi-user.target
 EOF
 cat <<EOF > %{buildroot}%{_sysconfdir}/default/prometheus
-ARGS=""
+ARGS="--config.file=%{_sysconfdir}/prometheus/prometheus.yml \
+  --storage.tsdb.path=%{_sharedstatedir}/prometheus/data \
+  --web.console.libraries=%{_datarootdir}/prometheus/console_libraries \
+  --web.console.templates=%{_datarootdir}/prometheus/consoles"
 EOF
 
 %pre
