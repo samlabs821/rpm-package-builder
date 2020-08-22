@@ -18,7 +18,10 @@ This is a Lua library that can be used with Nginx to keep track of metrics and e
 %prep
 %setup -q -n nginx-lua-prometheus-%{version}
 
+%build
+
 %install
+%{__rm} -rf %{buildroot}
 %{__install} -d %{buildroot}%{_datadir}/lua/%{lua_version}
 %{__install} -m 755 %{_builddir}/nginx-lua-prometheus-%{version}/*.lua \
   %{buildroot}%{_datadir}/lua/%{lua_version}
