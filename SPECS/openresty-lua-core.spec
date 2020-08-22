@@ -18,12 +18,14 @@ New FFI-based Lua API for ngx_http_lua_module and/or ngx_stream_lua_module.
 %prep
 %setup -q -n lua-resty-core-%{version}
 
+%build
+
 %install
+%{__rm} -rf %{buildroot}
 %{__install} -d %{buildroot}%{_datadir}/lua/%{lua_version}/resty
 %{__install} -d %{buildroot}%{_datadir}/lua/%{lua_version}/resty/core
 %{__install} -d %{buildroot}%{_datadir}/lua/%{lua_version}/ngx
 %{__install} -d %{buildroot}%{_datadir}/lua/%{lua_version}/ngx/ssl
-
 %{__install} -m 755 %{_builddir}/lua-resty-core-%{version}/lib/resty/*.lua \
   %{buildroot}%{_datadir}/lua/%{lua_version}/resty
 %{__install} -m 755 %{_builddir}/lua-resty-core-%{version}/lib/resty/core/*.lua \
