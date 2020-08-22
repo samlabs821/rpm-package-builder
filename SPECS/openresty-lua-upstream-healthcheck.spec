@@ -18,6 +18,8 @@ Health-checker for Nginx upstream servers.
 %prep
 %setup -q -n lua-resty-upstream-healthcheck-%{version}
 
+%build
+
 %install
 %{__install} -d %{buildroot}%{_datadir}/lua/%{lua_version}/resty
 %{__install} -d %{buildroot}%{_datadir}/lua/%{lua_version}/resty/upstream
