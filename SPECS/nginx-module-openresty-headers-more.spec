@@ -24,7 +24,7 @@ Set and clear input and output headers...more than "add"!
 
 %prep
 %setup -q -n nginx-%{nginx_version}
-%setup -T -D -b 1 -n headers-more-nginx-module-%{nginx_module_openresty_headers_more}
+%setup -T -D -b 1 -q -n headers-more-nginx-module-%{nginx_module_openresty_headers_more}
 
 %build
 cd %{_builddir}/nginx-%{nginx_version}

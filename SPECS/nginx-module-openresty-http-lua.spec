@@ -27,7 +27,7 @@ This module embeds LuaJIT 2.0/2.1 into Nginx. It is a core component of OpenRest
 
 %prep
 %setup -q -n nginx-%{nginx_version}
-%setup -T -D -b 1 -n lua-nginx-module-%{openresty_http_lua_version}
+%setup -T -D -b 1 -q -n lua-nginx-module-%{openresty_http_lua_version}
 
 %build
 cd %{_builddir}/nginx-%{nginx_version}

@@ -30,7 +30,7 @@ Nginx C module to expose Lua API to ngx_lua for Nginx upstreams.
 
 %prep
 %setup -q -n nginx-%{nginx_version}
-%setup -T -D -b 1 -n lua-nginx-module-%{openresty_http_lua_version}
+%setup -T -D -b 1 -q -n lua-nginx-module-%{openresty_http_lua_version}
 %setup -T -D -b 2 -n lua-upstream-nginx-module-%{openresty_upstream_lua_version}
 
 %build

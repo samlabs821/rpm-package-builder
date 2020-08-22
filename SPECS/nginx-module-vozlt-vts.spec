@@ -24,7 +24,7 @@ Nginx virtual host traffic status module.
 
 %prep
 %setup -q -n nginx-%{nginx_version}
-%setup -T -D -b 1 -n nginx-module-vts-%{nginx_module_vozlt_vts_version}
+%setup -T -D -b 1 -q -n nginx-module-vts-%{nginx_module_vozlt_vts_version}
 
 %build
 cd %{_builddir}/nginx-%{nginx_version}

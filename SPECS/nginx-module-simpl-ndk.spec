@@ -24,7 +24,7 @@ The NDK is an Nginx module that is designed to extend the core functionality of 
 
 %prep
 %setup -q -n nginx-%{nginx_version}
-%setup -T -D -b 1 -n ngx_devel_kit-%{simpl_ndk_version}
+%setup -T -D -b 1 -q -n ngx_devel_kit-%{simpl_ndk_version}
 
 %build
 cd %{_builddir}/nginx-%{nginx_version}

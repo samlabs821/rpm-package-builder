@@ -27,7 +27,7 @@ Embed the power of Lua into Nginx stream/TCP Servers.
 
 %prep
 %setup -q -n nginx-%{nginx_version}
-%setup -T -D -b 1 -n stream-lua-nginx-module-%{openresty_stream_lua_version}
+%setup -T -D -b 1 -q -n stream-lua-nginx-module-%{openresty_stream_lua_version}
 
 %build
 cd %{_builddir}/nginx-%{nginx_version}
