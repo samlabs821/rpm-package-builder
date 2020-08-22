@@ -17,7 +17,10 @@ It collects metrics from configured targets at given intervals, evaluates rule e
 %prep
 %setup -q -n prometheus-%{version}.linux-amd64
 
+%build
+
 %install
+%{__rm} -rf %{buildroot}
 %{__install} -d %{buildroot}%{_sharedstatedir}/prometheus
 %{__install} -d %{buildroot}%{_datadir}/prometheus/consoles
 %{__install} -d %{buildroot}%{_datadir}/prometheus/console_libraries
@@ -70,6 +73,9 @@ exit 0
 
 %postun
 %systemd_postun prometheus.service
+
+%clean
+%{__rm} -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
