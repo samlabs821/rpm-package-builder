@@ -32,8 +32,8 @@ cd %{_builddir}/nginx-%{nginx_version}
 %make_build modules
 
 %install
+%{__rm} -rf %{buildroot}
 %{__install} -d %{buildroot}%{_libdir}/nginx/modules
-
 %{__install} -m 755 %{_builddir}/nginx-%{nginx_version}/objs/ngx_http_vhost_traffic_status_module.so \
   %{buildroot}%{_libdir}/nginx/modules/ngx_http_vhost_traffic_status_module.so
 
