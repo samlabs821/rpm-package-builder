@@ -24,9 +24,9 @@ cd %{_builddir}/lua-resty-balancer-%{version}
 %make_build
 
 %install
+%{__rm} -rf %{buildroot}
 %{__install} -d %{buildroot}%{_libdir}/lua/%{lua_version}
 %{__install} -d %{buildroot}%{_datadir}/lua/%{lua_version}/resty
-
 %{__install} -m 755 %{_builddir}/lua-resty-balancer-%{version}/*.so \
   %{buildroot}%{_libdir}/lua/%{lua_version}
 %{__install} -m 755 %{_builddir}/lua-resty-balancer-%{version}/lib/resty/*.lua \
