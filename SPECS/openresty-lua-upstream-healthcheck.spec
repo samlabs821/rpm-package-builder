@@ -21,9 +21,9 @@ Health-checker for Nginx upstream servers.
 %build
 
 %install
+%{__rm} -rf %{buildroot}
 %{__install} -d %{buildroot}%{_datadir}/lua/%{lua_version}/resty
 %{__install} -d %{buildroot}%{_datadir}/lua/%{lua_version}/resty/upstream
-
 %{__install} -m 755 %{_builddir}/lua-resty-upstream-healthcheck-%{version}/lib/resty/upstream/*.lua \
   %{buildroot}%{_datadir}/lua/%{lua_version}/resty/upstream
 
