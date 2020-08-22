@@ -1,1 +1,2 @@
+setOption("NetworkEnabled", False)
 addFilter("invalid-url .*github\.com/.*HTTP Error 403")
