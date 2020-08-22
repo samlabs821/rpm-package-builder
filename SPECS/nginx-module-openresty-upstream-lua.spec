@@ -24,6 +24,7 @@ Requires: nginx = 1:%{nginx_version}
 Requires: nginx-module-simpl-ndk
 Requires: nginx-module-openresty-http-lua
 Requires: luajit
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Nginx C module to expose Lua API to ngx_lua for Nginx upstreams.

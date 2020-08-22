@@ -18,6 +18,7 @@ BuildRequires: openssl-devel
 BuildRequires: pcre-devel
 BuildRequires: zlib-devel
 Requires: nginx = 1:%{nginx_version}
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Set and clear input and output headers...more than "add"!

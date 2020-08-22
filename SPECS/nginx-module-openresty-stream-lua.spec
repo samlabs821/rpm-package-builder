@@ -21,6 +21,7 @@ BuildRequires: zlib-devel
 Requires: nginx = 1:%{nginx_version}
 Requires: nginx-module-simpl-ndk
 Requires: luajit
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Embed the power of Lua into Nginx stream/TCP Servers.

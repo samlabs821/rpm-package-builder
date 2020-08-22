@@ -11,6 +11,7 @@ Source: %{url}/archive/v%{version}/lua-resty-upstream-healthcheck-v%{version}.ta
 Requires: nginx
 Requires: lua = %{lua_version}
 BuildArch: noarch
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Health-checker for Nginx upstream servers.

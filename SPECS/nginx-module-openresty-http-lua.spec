@@ -21,6 +21,7 @@ BuildRequires: zlib-devel
 Requires: nginx = 1:%{nginx_version}
 Requires: nginx-module-simpl-ndk
 Requires: luajit
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 This module embeds LuaJIT 2.0/2.1 into Nginx. It is a core component of OpenResty.

@@ -11,6 +11,7 @@ Source: %{url}/archive/%{version}/nginx-lua-prometheus-%{version}.tar.gz
 Requires: nginx
 Requires: lua = %{lua_version}
 BuildArch: noarch
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 This is a Lua library that can be used with Nginx to keep track of metrics and expose them on a separate web page to be pulled by Prometheus.

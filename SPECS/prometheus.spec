@@ -9,6 +9,7 @@ URL: https://prometheus.io
 Source: https://github.com/prometheus/prometheus/releases/download/v%{version}/prometheus-%{version}.linux-amd64.tar.gz
 %{?systemd_requires}
 Requires(pre): shadow-utils
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Prometheus, a Cloud Native Computing Foundation project, is a systems and service monitoring system.

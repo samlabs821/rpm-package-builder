@@ -18,6 +18,7 @@ BuildRequires: openssl-devel
 BuildRequires: pcre-devel
 BuildRequires: zlib-devel
 Requires: nginx = 1:%{nginx_version}
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The NDK is an Nginx module that is designed to extend the core functionality of the excellent Nginx webserver in a way that can be used as a basis of other Nginx modules.

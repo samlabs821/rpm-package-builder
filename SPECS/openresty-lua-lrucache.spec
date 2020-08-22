@@ -11,6 +11,7 @@ Source: %{url}/archive/v%{version}/lua-resty-lrucache-v%{version}.tar.gz
 Requires: nginx
 Requires: lua = %{lua_version}
 BuildArch: noarch
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 This library implements a simple LRU cache for OpenResty and the ngx_lua module.

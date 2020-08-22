@@ -11,6 +11,7 @@ Source: %{url}/archive/v%{version}/lua-resty-core-v%{version}.tar.gz
 Requires: nginx
 Requires: lua = %{lua_version}
 BuildArch: noarch
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 New FFI-based Lua API for ngx_http_lua_module and/or ngx_stream_lua_module.

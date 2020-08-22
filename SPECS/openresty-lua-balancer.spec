@@ -12,6 +12,7 @@ BuildRequires: libtool
 BuildRequires: make
 Requires: nginx
 Requires: lua = %{lua_version}
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 A generic consistent hash and roundrobin implementations for OpenResty/LuaJIT.
