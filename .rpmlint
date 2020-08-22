@@ -1,0 +1,1 @@
+addFilter("invalid-url .*github\.com/.*HTTP Error 403")
