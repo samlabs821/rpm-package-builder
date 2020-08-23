@@ -14,7 +14,6 @@ fi
 feature="${1}"
 spec_file="${2}"
 script_name="${0##*/}"
-script_work_directory="${PWD}"
 docker_script_work_directory="/srv"
 docker_image_name="centos"
 docker_image_tag="7"
@@ -26,13 +25,27 @@ build() {
   rpmbuild -bb --define "_topdir $(pwd)" "${spec_file}"
 }
 
-build_in_docker() {
+lint() {
+  yum --assumeyes install rpmlint
+  rpmlint -f .rpmlint -vi "${spec_file}"
+}
+
+run_in_docker() {
+  [[ -z "${1}" ]] && die "Please specify a feature you want to run inside docker container."
   docker run \
     --mount "type=bind,source=${PWD},target=${docker_script_work_directory}" \
     --workdir "${docker_script_work_directory}" \
     --tty \
     "${docker_image_name}:${docker_image_tag}" \
-    "${docker_script_work_directory}/${script_name}" build "${spec_file}"
+    "${docker_script_work_directory}/${script_name}" "${1}" "${spec_file}"
+}
+
+lint_in_docker() {
+  run_in_docker lint
+}
+
+build_in_docker() {
+  run_in_docker build
 }
 
 "${feature}" "${spec_file}"
