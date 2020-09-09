@@ -5,7 +5,7 @@
 
 Name: nginx-module-vozlt-sts
 Version: %{nginx_version}+%{nginx_module_vozlt_sts_version}
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: nginx vozlt sts shared module
 License: BSD
 URL: https://github.com/vozlt/nginx-module-sts
@@ -20,7 +20,7 @@ BuildRequires: openssl-devel
 BuildRequires: pcre-devel
 BuildRequires: zlib-devel
 Requires: nginx = 1:%{nginx_version}
-Requires: nginx-module-vozlt-stream-sts = 1:%{nginx_module_vozlt_stream_sts_version}
+Requires: nginx-module-vozlt-stream-sts
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
